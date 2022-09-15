@@ -18,7 +18,7 @@ const useFetch = (urlParams) => {
 
       if (data.Response === 'True') {
         setError({ show: false, message: "" })
-        setMovieData(data.Search)
+        setMovieData(data.Search || data)
       } else {
         setError({ show: true, message: data.Error })
       }
