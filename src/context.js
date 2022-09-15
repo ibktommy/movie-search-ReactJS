@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 export const apiUrl = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`
 
@@ -13,6 +13,24 @@ const AppProvider = ({ children }) => {
   const [movies, setMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState('avengers')
 
+
+  // Funtion to Fetch Data from API_URL
+  const fetchMovies = async (url) => {
+    setIsLoading(true)
+
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  // Calling the FetchMovies Function in the useEffect Hook
+  useEffect(() => {
+    fetchMovies(`${apiUrl}&s=${searchTerm}`)
+  }, [searchTerm])
 
   return (
     <AppContext.Provider value={'hello'}>
