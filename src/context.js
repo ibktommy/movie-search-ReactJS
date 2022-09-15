@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
         setError({ show: true, message: data.Error })
       }
       setIsLoading(false)
-      
+
     } catch (error) {
       console.log(error.message)
     }
@@ -42,7 +42,13 @@ const AppProvider = ({ children }) => {
   }, [searchTerm])
 
   return (
-    <AppContext.Provider value={'hello'}>
+    <AppContext.Provider value={{
+      isLoading,
+      error,
+      movies,
+      searchTerm,
+      setSearchTerm
+    }}>
       {children}
     </AppContext.Provider>
   )
