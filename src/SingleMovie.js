@@ -6,7 +6,7 @@ const SingleMovie = () => {
   // Setting COmponent State
   const [movieDetail, setMovieDetail] = useState({})
   const [isLoading, setIsLoading] = useState(true)
-  const [error, isError] = useState({ show: false, message: ' ' })
+  const [error, setError] = useState({ show: false, message: ' ' })
 
   // Setting value from Global Context as ID
   const { id } = useParams()
@@ -14,6 +14,14 @@ const SingleMovie = () => {
   const fetchMovieDetails = async (apiUrl) => {
     const response = await fetch(apiUrl)
     const data = await response.json()
+
+    if (data.Response === "TRUE") {
+      setError({ show: false, message: '' })
+      setIsLoading(false)
+    } else {
+      setMovieDetail(data)
+      setIsLoading(false)
+    }
 
     console.log(data)
   }
