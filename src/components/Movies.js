@@ -18,7 +18,7 @@ const Movies = () => {
       {
         movies.map((movie) => {
           // Destructuring movie-object
-          const { imdbID: id, Poster: poster, Tilte: title, Year: year } = movie
+          const { imdbID: id, Poster: poster, Title: title, Year: year } = movie
           return (
             <Link to={`/movies/${id}`} key={id} className='movie'>
               <article>
