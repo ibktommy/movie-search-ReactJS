@@ -1,8 +1,13 @@
+import { Routes, Route } from 'react-router-dom'
+import Home from './Home';
+import MovieDetail from './SingleMovie'
+
 function App() {
   return (
-    <h1>
-      Hello
-    </h1>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/movies/:id' element={<MovieDetail />} />
+    </Routes>
   );
 }
 
