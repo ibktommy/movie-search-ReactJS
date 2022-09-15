@@ -8,7 +8,7 @@ const SearchForm = () => {
   return (
     <form className="search-form">
       <h2>search movies</h2>
-      <input type="text" className='form-input' value={searchTerm} onChange={(e) => e.target.value} />
+      <input type="text" className='form-input' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
     </form>
   )
 }
